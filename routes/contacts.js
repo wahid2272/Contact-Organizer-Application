@@ -22,24 +22,89 @@ router.get('/', auth, async (req, res) => {
 });
 
 // @route link     POST api/contacts
-// @description    Add new contact
+// This will       Add new contact
 // @access will be Private
-router.post('/', (req, res) => {
-  res.send('Add new contact')
-});
+router.post('/', [auth, [
+    body('name', 'Name is required').not().isEmpty()
+  ]
+], 
+async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  // Picture to be added later
+  const { name, email, phone } = req.body;
+
+  try {
+    const newContact = new Contact({
+      name,
+      email,
+      phone,
+      user: req.user.id
+    });
+
+    const contact = await newContact.save();
+    res.json(contact);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Sorry, Server Error');
+  }
+ }
+);
 
 // @route link     PUT api/contacts/:id
-// @description    Update an existing contact
+// This will       Update an existing contact
 // @access will be Private
-router.put('/:id', (req, res) => {
-  res.send('Update a contact')
+router.put('/:id', auth, async (req, res) => {
+  const { name, email, phone } = req.body;
+
+  const contactsFields = {};
+  if(name) contactsFields.name = name;
+  if(email) contactsFields.email = email;
+  if(phone) contactsFields.phone = phone;
+
+  try {
+    let contact = await Contact.findById(req.params.id);
+
+    if(!contact) return res.status(404).json({ msg: 'Contact is not available'});
+
+    if(contact.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Request not authorized'})
+    }
+
+    contact = await Contact.findByIdAndUpdate(req.params.id, 
+      { $set: contactsFields },
+      { new: true });
+
+      res.json(contact);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Sorry, Server Error');
+  }
 });
 
 // @route link     DELETE api/contacts/:id
-// @description    Delete an existing contact
+// This will       Delete an existing contact
 // @access will be Private
-router.delete('/:id', (req, res) => {
-  res.send('Delete a contact')
+router.delete('/:id', auth, async(req, res) => {
+  try {
+    let contact = await Contact.findById(req.params.id);
+
+    if(!contact) return res.status(404).json({ msg: 'Contact is not available'});
+
+    if(contact.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Request not authorized'})
+    }
+
+    await Contact.findByIdAndRemove(req.params.id);
+    
+    res.json({ msg: 'Your contact is removed'});
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Sorry, Server Error');
+  }
 });
 
 module.exports = router;
