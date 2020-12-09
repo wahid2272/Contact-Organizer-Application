@@ -1,0 +1,30 @@
+.Login {
+  padding: 60px 0;
+}
+
+.Login form {
+  margin: 0 auto;
+  max-width: 320px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem;
+}
+
+input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #50a3a4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 150px;
+}
