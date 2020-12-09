@@ -13,7 +13,7 @@ const register = (userId, password, confirmPassword) => {
 const login = (userId, password) => {
   return axios
     .post(API_URL + "signin", {
-      username,
+      userId,
       password,
     })
     .then((res) => {

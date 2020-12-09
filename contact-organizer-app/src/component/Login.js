@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { React, useState, useRef } from "react";
 import Form from "react-validation/build/form";
-import Input from "reat-validation/build/input";
-import CheckButtton from "react-validation/build/button";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
 
@@ -43,7 +42,7 @@ const Login = (props) => {
 
     form.current.validateAll();
 
-    if (checkBtn.current.contect._errors.length === 0) {
+    if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(userId, password).then(
         () => {
           props.history.push("/profile");
@@ -76,7 +75,7 @@ const Login = (props) => {
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group">
             <label htmlFor="userId">User ID</label>
-            <input
+            <Input
               type="text"
               className="form-control"
               name="userId"
