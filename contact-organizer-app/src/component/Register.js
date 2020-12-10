@@ -62,104 +62,104 @@ const Register = (props) => {
     }
     setConfirmPassword(confirmPassword);
   };
-};
 
-const handleRegister = (e) => {
-  e.preventDefault();
+  const handleRegister = (e) => {
+    e.preventDefault();
 
-  setMessage("");
-  setSuccessful(false);
+    setMessage("");
+    setSuccessful(false);
 
-  form.current.validateAll();
+    form.current.validateAll();
 
-  if (checkBtn.current.context._errors.length === 0) {
-    AuthService.register(userId, password, confirmPassword).then(
-      (res) => {
-        setMessage(res.data.message);
-        setSuccessful(true);
-      },
-      (err) => {
-        const resMessage =
-          (err.res && err.res.data && err.data.message) ||
-          err.message ||
-          err.toString();
+    if (checkBtn.current.context._errors.length === 0) {
+      AuthService.register(userId, password, confirmPassword).then(
+        (res) => {
+          setMessage(res.data.message);
+          setSuccessful(true);
+        },
+        (err) => {
+          const resMessage =
+            (err.res && err.res.data && err.data.message) ||
+            err.message ||
+            err.toString();
 
-        setMessage(resMessage);
-        setSuccessful(false);
-      }
-    );
-  }
-};
+          setMessage(resMessage);
+          setSuccessful(false);
+        }
+      );
+    }
+  };
 
-return (
-  <div className="col-md-12">
-    <div className="card card-container">
-      <img
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        alt="profile-img"
-        className="profile-img-card"
-      />
+  return (
+    <div className="col-md-12">
+      <div className="card card-container">
+        <img
+          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+          alt="profile-img"
+          className="profile-img-card"
+        />
 
-      <Form onSubmit={handleRegister} ref={form}>
-        {!successful && (
-          <div>
+        <Form onSubmit={handleRegister} ref={form}>
+          {!successful && (
+            <div>
+              <div className="form-group">
+                <label htmlFor="userId">User ID</label>
+                <Input
+                  type="text"
+                  className="form-control"
+                  name="userId"
+                  value={userId}
+                  onChange={onChangeUserId}
+                  validations={[required, validateUserId]}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <Input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  value={password}
+                  onChange={onChangePassword}
+                  validations={[required, validatePassword]}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <Input
+                  type="password"
+                  className="form-control"
+                  name="confirmPassword"
+                  value={confirmPassword}
+                  onChange={onChangeConfirmPassword}
+                  validations={[required, validatePassword]}
+                />
+              </div>
+              <div className="form-group">
+                <button className="btn btn-primary btn-block">Sign Up</button>
+              </div>
+            </div>
+          )}
+
+          {message && (
             <div className="form-group">
-              <label htmlFor="userId">User ID</label>
-              <Input
-                type="text"
-                className="form-control"
-                name="userId"
-                value={userId}
-                onChange={onChangeUserId}
-                validations={[required, validateUserId]}
-              />
+              <div
+                className={
+                  successful ? "alert alert-success" : "alert alert-danger"
+                }
+                role="alert"
+              >
+                {message}
+              </div>
             </div>
-
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <Input
-                type="password"
-                className="form-control"
-                name="password"
-                value={password}
-                onChange={onChangePassword}
-                validations={[required, validatePassword]}
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="confirmPassword">Confirm Password</label>
-              <Input
-                type="password"
-                className="form-control"
-                name="confirmPassword"
-                value={confirmPassword}
-                onChange={onChangeConfirmPassword}
-                validations={[required, validatePassword]}
-              />
-            </div>
-            <div className="form-group">
-              <button className="btn btn-primary btn-block">Sign Up</button>
-            </div>
-          </div>
-        )}
-
-        {message && (
-          <div className="form-group">
-            <div
-              className={
-                successful ? "alert alert-success" : "alert alert-danger"
-              }
-              role="alert"
-            >
-              {message}
-            </div>
-          </div>
-        )}
-        <CheckButton style={{ display: "none" }} ref={checkBtn} />
-      </Form>
+          )}
+          <CheckButton style={{ display: "none" }} ref={checkBtn} />
+        </Form>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Register;
