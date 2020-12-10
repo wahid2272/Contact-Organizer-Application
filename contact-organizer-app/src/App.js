@@ -26,10 +26,10 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="App">
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <Link to={"/"} className="navbar-brand">
-          Anonymous User
+          Contact Organizer
         </Link>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
