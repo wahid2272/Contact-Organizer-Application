@@ -50,7 +50,7 @@ const Login = (props) => {
         },
         (err) => {
           const resMessage =
-            (err.res && err.res.data && err.res.data.messag) ||
+            (err.res && err.res.data && err.res.data.message) ||
             err.message ||
             err.toString();
 

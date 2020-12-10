@@ -73,7 +73,7 @@ const handleRegister = (e) => {
   form.current.validateAll();
 
   if (checkBtn.current.context._errors.length === 0) {
-    AuthService.register(username, email.password).then(
+    AuthService.register(userId, password, confirmPassword).then(
       (res) => {
         setMessage(res.data.message);
         setSuccessful(true);
@@ -162,4 +162,4 @@ return (
   </div>
 );
 
-export default Register
+export default Register;
