@@ -9,7 +9,7 @@ const required = (value) => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
-        This field is reqired!
+        This field is required!
       </div>
     );
   }
@@ -110,6 +110,7 @@ const Register = (props) => {
                   name="userId"
                   value={userId}
                   onChange={onChangeUserId}
+                  placeholder="User ID"
                   validations={[required, validateUserId]}
                 />
               </div>
@@ -122,6 +123,7 @@ const Register = (props) => {
                   name="password"
                   value={password}
                   onChange={onChangePassword}
+                  placeholder="password"
                   validations={[required, validatePassword]}
                 />
               </div>
@@ -134,11 +136,12 @@ const Register = (props) => {
                   name="confirmPassword"
                   value={confirmPassword}
                   onChange={onChangeConfirmPassword}
+                  placeholder="confirm password"
                   validations={[required, validatePassword]}
                 />
               </div>
               <div className="form-group">
-                <button className="btn btn-primary btn-block">Sign Up</button>
+                <button className="btn btn-custom btn-block ">Sign Up</button>
               </div>
             </div>
           )}

@@ -1,7 +1,17 @@
+.navbar-custom {
+  background-color: #dff3f3;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: #50a3a4;
+  font-size: 1rem;
+}
 
 label {
   display: block;
   margin-top: 10px;
+  color: #50a3a4;
 }
 
 .card-container.card {
@@ -10,7 +20,7 @@ label {
 }
 
 .card {
-  background-color: #f7f7f7;
+  background-color: #dff3f3;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;
@@ -30,4 +40,29 @@ label {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+}
+
+/* .btn-primary,
+.btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: #50a3a4;
+  border-color: #50a3a4;
+  background-image: none;
+} */
+
+.btn-custom {
+  background-color: #50a3a4;
+  border: #50a3a4;
+  color: #fff;
+}
+
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active,
+.btn-custom:visited {
+  background-color: #50a3a4;
+  border: #50a3a4;
+  color: #fff;
 }

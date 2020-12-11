@@ -81,6 +81,7 @@ const Login = (props) => {
               name="userId"
               value={userId}
               onChange={onChangeUserId}
+              placeholder="User ID"
               validaitons={[required]}
             />
           </div>
@@ -93,12 +94,13 @@ const Login = (props) => {
               name="password"
               value={password}
               onChange={onChangePassword}
+              placeholder="password"
               validaitons={[required]}
             />
           </div>
 
           <div className="form-group">
-            <button className="btn btn-primary btn-block" disabled={loading}>
+            <button className="btn btn-custom btn-block" disabled={loading}>
               {loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}

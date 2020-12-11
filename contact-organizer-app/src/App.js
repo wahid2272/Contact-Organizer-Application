@@ -27,19 +27,19 @@ function App() {
 
   return (
     <div className="App">
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <Link to={"/"} className="navbar-brand">
+      <nav className="navbar navbar-expand navbar-dark navbar-custom">
+        <Link to={"/"} className="navbar-brand navbar-text">
           Contact Organizer
         </Link>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to={"/home"} className="nav-link">
+            <Link to={"/home"} className="navbar-brand navbar-text">
               Home
             </Link>
           </li>
           {currentUser && (
             <li className="nav-item">
-              <Link to={"/user"} className="nav-link">
+              <Link to={"/user"} className="navbar-brand navbar-text">
                 User
               </Link>
             </li>
@@ -49,12 +49,12 @@ function App() {
         {currentUser ? (
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link to={"/profile"} className="nav-link">
+              <Link to={"/profile"} className="navbar-brand navbar-text">
                 {currentUser.userId}
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="/login" className="nav-link" onClick={logOut}>
+              <Link href="/login" className="navbar-brand navbar-text" onClick={logOut}>
                 LogOut
               </Link>
             </li>
@@ -62,13 +62,13 @@ function App() {
         ) : (
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link to={"/login"} className="nav-link">
+              <Link to={"/login"} className="navbar-brand navbar-text">
                 Login
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link to={"/register"} className="nav-link">
+              <Link to={"/register"} className="navbar-brand navbar-text">
                 Sign Up
               </Link>
             </li>
