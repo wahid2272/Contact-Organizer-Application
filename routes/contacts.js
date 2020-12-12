@@ -3,7 +3,10 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
+var multer = require('multer');
 const { body, validationResult } = require('express-validator');
+
+const upload = multer({ dest: 'uploads'});
 
 const User = require('../models/User');
 const Contact = require('../models/Contact');
@@ -24,24 +27,25 @@ router.get('/', auth, async (req, res) => {
 // @route link     POST api/contacts
 // This will       Add new contact
 // @access will be Private
-router.post('/', [auth, [
+router.post('/', upload.single(), [auth, [
     body('name', 'Name is required').not().isEmpty()
   ]
 ], 
-async (req, res) => {
+async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
 
   // Picture to be added later
-  const { name, email, phone } = req.body;
+  const { name, email, phone, img } = req.body;
 
   try {
     const newContact = new Contact({
       name,
       email,
       phone,
+      img,
       user: req.user.id
     });
 
@@ -58,12 +62,13 @@ async (req, res) => {
 // This will       Update an existing contact
 // @access will be Private
 router.put('/:id', auth, async (req, res) => {
-  const { name, email, phone } = req.body;
+  const { name, email, phone, img } = req.body;
 
   const contactsFields = {};
   if(name) contactsFields.name = name;
   if(email) contactsFields.email = email;
   if(phone) contactsFields.phone = phone;
+  if(img) contactsFields.img = img;
 
   try {
     let contact = await Contact.findById(req.params.id);
