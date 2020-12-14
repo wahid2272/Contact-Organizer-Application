@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import AuthContext from '../services/authentication/AuthenticationContext';
@@ -11,10 +11,10 @@ const Navbar = ({ title, icon}) => {
   const { isAuthenticated, logout, user, loadUser } = authContext;
   const { clearContacts } = contactContext;
 
-  // useEffect(() => {
-  //   loadUser();
-  //   // eslint-disable-next-line
-  // }, []);
+  useEffect(() => {
+    loadUser();
+    // eslint-disable-next-line
+  }, []);
 
   const onLogout = () => {
     logout();
@@ -25,7 +25,7 @@ const Navbar = ({ title, icon}) => {
     <>
       <li>Hello {user && user.name}</li>
       <li>
-        <a onClick={onLogout} href='#!'>
+        <a onClick={onLogout} href='/'>
           <i className='fas fa-sign-out-alt' />{' '}
           <span className='hide-sm'>Logout</span>
         </a>
@@ -62,8 +62,8 @@ Navbar.propTypes ={
 }
 
 Navbar.defaultProps = {
-  title: 'Contact Organizer',
-  icon: 'far fa-address-book'
+  title: 'contact organizer',
+  icon: 'fas fa-user-plus'
 }
 
 export default Navbar;
