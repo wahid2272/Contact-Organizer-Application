@@ -7,3 +7,8 @@ We are students of Helsinki Business College. This is a software team project fo
 - Siddique Wahiduzzaman
 - Ahmad Fahad
 - Ola-Adua Ibraheem
+
+### NPM run command
+- npm run dev
+
+'npm run dev' command will open both frontend and backend. Frontend will be shown in browser at port 3000 and backend will be at 5000. backend will be run at terminal.
