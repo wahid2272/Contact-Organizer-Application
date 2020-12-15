@@ -13,7 +13,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_ERRORS
-} from '../types';
+} from '../types'; 
 
 const AuthenticationState = props => {
   const initialState = {
@@ -35,7 +35,7 @@ const AuthenticationState = props => {
       const res = await axios.get('/api/auth');
 
       dispatch({type: USER_LOADED, payload: res.data})
-    } catch (error) {
+    } catch (err) {
       dispatch({ type: AUTH_ERROR })
     }
   }
