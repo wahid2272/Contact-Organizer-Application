@@ -3,10 +3,13 @@
 /* Global Styles */
 :root {
   --primary-color: #1f3120;
+  --bg-color: #DFF3F3;
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --bt-color: #50A3A4;
+
 }
 
 * {
@@ -19,8 +22,10 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #fff;
+  background-color: var(--bg-color);
   color: #333;
+  /* max-width: 1400px;
+  margin: 0 auto; */
 }
 
 a {
@@ -163,6 +168,10 @@ img {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
+  min-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .grid-3 {
@@ -232,10 +241,10 @@ img {
 }
 
 .btn-primary,
-.bg-primary,
+
 .badge-primary,
 .alert-primary {
-  background: var(--primary-color);
+  background: var(--bt-color);
   color: #fff;
 }
 
@@ -289,8 +298,45 @@ img {
   border: #ccc solid 1px;
 }
 
+#root, .container {
+  width: 100%;
+  height: 100vh;
+}
+.register {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 100% !important;
+  align-items: center;
+}
+.register > * {
+  max-width: 500px;
+}
+
 .round-img {
   border-radius: 50%;
+}
+
+/* Hero section */
+.hero {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100%;
+  width: 70%;
+}
+.hero-img {
+ min-height: 200px;
+ max-height: 500px;
+ height: 80%;
+ background-position: center center;
+ background-size: cover;
+}
+.hero-content {
+  font-size: 1.5em;
+  padding: 1.5em 0;
 }
 
 /* Forms */
@@ -332,9 +378,17 @@ button {
 
 .form-container {
   max-width: 500px;
-  margin: 2rem auto;
+  /* margin: 2rem auto; */
   overflow: hidden;
-  padding: 0 2rem;
+  /* padding: 0 2rem; */
+  min-height: calc(75vh - 150px);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
 }
 
 .form-container h1,
@@ -361,7 +415,7 @@ table th {
   padding: 0.7rem 2rem;
   z-index: 1;
   width: 100%;
-  border-bottom: solid 1px var(--primary-color);
+  border-bottom: solid 8px var(--primary-color);
   opacity: 0.9;
   margin-bottom: 1rem;
 }
@@ -370,8 +424,12 @@ table th {
   display: flex;
 }
 
+.navbar ul button {
+  margin: 0 10px;
+}
+
 .navbar a {
-  color: #fff;
+  color: #333;
   padding: 0.45rem;
   margin: 0 0.25rem;
 }
@@ -382,6 +440,11 @@ table th {
 
 .navbar .welcome span {
   margin-right: 0.6rem;
+}
+
+.footer {
+  text-align: right;
+  margin-right: 20px;
 }
 
 /* Animation (Add After) */
