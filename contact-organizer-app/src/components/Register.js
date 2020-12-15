@@ -49,7 +49,7 @@ const Register = (props) => {
    };
 
   return (
-    <div className='form-container'>
+    <div className='form-container register'>
       <h1>
         Account <span className='text-primary'>Register</span>
       </h1>

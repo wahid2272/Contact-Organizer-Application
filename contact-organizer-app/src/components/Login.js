@@ -43,6 +43,7 @@ const Login = (props) => {
       });
     }
   };
+  const image = 'https://source.unsplash.com/700x500/?phonebook';
 
   return (
     <div className="wrapper">
@@ -52,7 +53,7 @@ const Login = (props) => {
               Contact Organizer helps you <br></br> to manage information of the <br></br> <strong><span>people that matter to you.</span></strong>
             </p>
           </div>
-            <img src='https://source.unsplash.com/700x500/?nature,water' alt=''/>
+            <div className={'hero-img'} style={{backgroundImage: `url(${image})`}}/>
       </div>
       <div className='form-container'>
       

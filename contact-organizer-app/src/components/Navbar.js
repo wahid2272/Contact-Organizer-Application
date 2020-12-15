@@ -38,7 +38,7 @@ const Navbar = ({ title, icon}) => {
 
   const guestLinks = (
     <>
-    <Button variant="contained" color="bt-color">
+    <Button variant="contained" color="secondary-color">
       <li>
         <Link to='/register'>Register</Link>
       </li>
@@ -53,13 +53,9 @@ const Navbar = ({ title, icon}) => {
 
   return (
     <div className='navbar bg-primary'>
-      {/* <h1>
-        <Link to='/'>
-          <i className={icon} /> {title}
-        </Link>
-      </h1> */}
+      
       <div className="header-logo">
-        <Link to='./'><img src={logo} alt="logo" /></Link>
+        <Link to='/'><img src={logo} alt="logo" /></Link>
       </div>
       <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>
