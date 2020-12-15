@@ -6,6 +6,7 @@ import About from './components/About';
 import Register from './components/Register';
 import Login from './components/Login';
 import Alerts from './components/Alerts';
+import Footer from './components/Footer';
 
 import ContactState from './services/contactState/ContactState';
 import AuthenticationState from './services/authentication/AuthenticationState';
@@ -37,9 +38,11 @@ function App() {
               </div>
             </>
           </Router>
+          <Footer />
         </AlertState>
       </ContactState>
     </AuthenticationState>
+    
   );
 }
 
