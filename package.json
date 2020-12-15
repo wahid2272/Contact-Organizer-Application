@@ -8,7 +8,8 @@
     "server": "nodemon server.js",
     "contact-organizer-app": "npm start --prefix contact-organizer-app",
     "contact-organizer-appinstall": "npm install --prefix contact-organizer-app",
-    "dev": "concurrently \"npm run server\" \"npm run contact-organizer-app\""
+    "dev": "concurrently \"npm run server\" \"npm run contact-organizer-app\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix contact-organizer-app && npm run build --prefix contact-organizer-app"
   },
   "repository": {
     "type": "git",
