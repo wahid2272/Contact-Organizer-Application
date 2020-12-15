@@ -8,6 +8,8 @@
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --bt-color: #50A3A4;
+
 }
 
 * {
@@ -22,6 +24,8 @@ body {
   line-height: 1.6;
   background-color: var(--bg-color);
   color: #333;
+  /* max-width: 1400px;
+  margin: 0 auto; */
 }
 
 a {
@@ -236,7 +240,7 @@ img {
 
 .badge-primary,
 .alert-primary {
-  background: var(--primary-color);
+  background: var(--bt-color);
   color: #fff;
 }
 
@@ -300,6 +304,7 @@ img {
 }
 .hero-content {
   font-size: 1.5em;
+  padding: 2em 0;
 }
 
 /* Forms */

@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import AlertContext from '.././services/alert/AlertContext';
 import AuthContext from '.././services/authentication/AuthenticationContext';
 
+
+
 const Login = (props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
@@ -53,7 +55,7 @@ const Login = (props) => {
             <img src='https://source.unsplash.com/700x500/?nature,water' alt=''/>
       </div>
       <div className='form-container'>
-
+      
         <h1>
           Account <span className='text-primary'>Login</span>
         </h1>
