@@ -86,7 +86,7 @@ const Register = (props) => {
             onChange={onChange}
             required
             minLength='6'
-          />
+          /> 
         </div>
         <div className='form-group'>
           <label htmlFor='password2'>Confirm Password</label>
